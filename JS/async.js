@@ -40,4 +40,3 @@ setTimeout(() => {
 }, 3000);
 
 console.log("El usuario Puede Seguir Navegando")
-
