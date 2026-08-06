@@ -32,7 +32,6 @@ setTimeout(() => {
 setTimeout(() => {
     console.log("buscando alumnos...")
 }, 4000);
-*/
 
 console.log("Abirendo SGA")
 setTimeout(() => {
@@ -40,3 +39,17 @@ setTimeout(() => {
 }, 3000);
 
 console.log("El usuario Puede Seguir Navegando")
+
+async function mostrarUsuario(){
+console.log("Consultando usuario...")
+const usuario = await obtenerUsuario()
+console.log(usuario)
+}
+mostrarUsuario()
+*/
+
+async function test() {
+  const respuesta = await fetch("https://jsonplaceholder.typicode.com/users");
+  console.log(respuesta);
+}
+test();
