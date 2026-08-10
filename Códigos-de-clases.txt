@@ -1,0 +1,524 @@
+Código clase 1
+commit: "Clase 01 - Estructura inicial del proyecto"
+
+.gitignore
+
+# Visual Studio Code
+.vscode/
+
+# Variables de entorno
+.env
+
+# Node.js
+node_modules/
+
+LICENSE
+<!-- (https://choosealicense.com/licenses/mit/) -->
+MIT License
+
+Copyright (c) 2026 Programación IV - FRRQ (Reconquista - Santa Fe)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+README.md
+
+# Sistema de Gestión Académica (SGA)
+
+Proyecto desarrollado durante la materia Programación IV.
+
+## Descripción
+
+El Sistema de Gestión Académica (SGA) es una aplicación web que permitirá administrar alumnos, docentes, cursos y materias.
+
+Durante el desarrollo del proyecto se incorporarán progresivamente nuevas tecnologías y funcionalidades.
+
+
+## Objetivos
+
+- Gestionar alumnos.
+
+- Gestionar docentes.
+
+- Gestionar cursos.
+
+- Gestionar materias.
+
+- Implementar autenticación de usuarios.
+
+- Consumir una API REST.
+
+- Persistir la información en MongoDB.
+
+## Tecnologías
+
+
+Actualmente:
+
+- HTML5
+
+
+Próximamente:
+
+- CSS3
+
+- JavaScript
+
+- React
+
+- Node.js
+
+- Express
+
+- MongoDB
+
+## Estado del proyecto
+
+?? En desarrollo.
+
+## Autor
+
+Nombre del estudiante
+
+
+Programación IV
+
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGA</title>
+</head>
+<body>
+    <h1>Sistema de Gestión Académica</h1>
+    <p>Proyecto de Programación IV</p>
+</body>
+</html>
+
+Clase 2:
+commit: "Clase 02 - Agrego estructura JS y primer ejemplo de asincronía"
+
+JS/asincronia.js
+
+// console.log("Inicio")
+// setTimeout(() => {
+//     console.log("Buscando alumnos...")
+// }, 3000)
+// console.log("Fin")
+
+// function saludar(){
+//     console.log("Hola")
+// }
+// function ejecutar(funcion){
+//     funcion();
+// }
+// ejecutar(saludar)
+
+// function despedirse(){
+//     console.log("Hasta luego")
+// }
+// setTimeout(despedirse, 3000)
+
+// setTimeout(() => {
+//     console.log("Buscando docentes...")
+// }, 2000);
+
+// setTimeout(() => {
+//     console.log("Buscando materias...")
+// }, 4000);
+
+// setTimeout(() => {
+//     console.log("Buscando cursos...")
+// }, 1000);
+
+console.log("Abriendo SGA")
+setTimeout(() => {
+    console.log("Alumnos cargados")
+}, 3000);
+
+console.log("El usuario puede seguir navegando")
+
+README.md
+
+Actualmente:
+
+- HTML5
+- JavaScript
+
+## Estado del proyecto
+
+- Versión: 
+Clase 02
+
+Clase 3:
+commit: "Clase 03 - Agrego alumnos.js y ejemplos de Promise"
+
+JS/alumnos.js
+
+const alumnos = [
+    {
+        id: 1,
+        nombre: "Ana"
+    },
+    {
+        id: 2,
+        nombre: "José"
+    }
+];
+function obtenerAlumnos(){
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(alumnos)
+        }, 2000);
+    })
+}
+async function iniciar(){
+    const datos = await obtenerAlumnos()
+    console.table(datos)
+}
+iniciar()
+
+// Actividades:
+// crear obtenerMaterias()
+// crear obtenerDocentes()
+// mostrar los datos a través de async/await
+
+JS/asincronia.js
+
+// console.log("Abriendo SGA")
+// setTimeout(() => {
+//     console.log("Alumnos cargados")
+// }, 3000);
+
+// console.log("El usuario puede seguir navegando")
+
+function obtenerAlumnos(){
+   return new Promise((resolve) => {
+    setTimeout(() => {
+        console.log("Ya tengo el arreglo")
+        resolve(["Ana", "Juan", "Pedro"])
+    }, 3000);
+   })
+}
+// obtenerAlumnos().then((alumnos) => {
+//     console.log(alumnos)
+// })
+
+// async function iniciar() {
+//     const alumnos = await obtenerAlumnos()
+//     console.log(alumnos)
+// } 
+// iniciar()
+
+// login(usuario).then((usuario) => {
+//     return obtenerCursos(usuario.id)
+// })
+// .then((cursos) => {
+//     return obtenerNotas(cursos)
+// })
+// .then((notas) => {
+//     console.log(notas)
+// })
+// .catch((error) => {
+//     console.log(error)
+// })
+
+// async function mostrarNotas(){
+//     try {
+//     const usuario = await login(usuario)
+//     const cursos = await obtnerCursos(usuario.id)
+//     const notas = await obtenerNotas(cursos)
+//     console.log(notas)
+//     }
+//     catch(error) {
+//         console.log()
+//     }
+// }
+
+function obtenerClima() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("22°c - Soleado")
+        }, 2000)
+    })
+}
+
+// con then()
+obtenerClima().then((clima) => {
+    console.log(clima)
+});
+
+// con async/await
+async function mostrarClima() {
+    const clima = await obtenerClima()
+    console.log(clima)
+}
+
+mostrarClima()
+
+function consultarSaldo() {
+    return new Promise((resolve) => {
+    setTimeout(() => {
+        resolve(125000)
+    }, 3000);
+});
+}
+
+async function mostrarSaldo(){
+    const saldo = await consultarSaldo()
+    console.log(`Su saldo es: $${saldo}`)
+}
+mostrarSaldo()
+
+function iniciarSesion() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("Bienvenida, Irina")
+        }, 2000)
+    })
+}
+async function mostrarInicio() {
+    const mensaje = await iniciarSesion()
+    console.log(mensaje)
+}
+mostrarInicio()
+
+console.log("El usuario puede seguir navegando")
+function obtenerUsuario(){
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve({
+                id: 1,
+                nombre: "Maria",
+                edad: 25
+            })
+        }, 3000);
+    })
+}
+async function mostrarUsuario(){
+    console.log("Consultando usuario...")
+    const usuario = await obtenerUsuario()
+    console.log(usuario)
+}
+mostrarUsuario()
+
+Clase 4:
+commit: "Clase 04 - Fetch y Api"
+
+JS/alumnos.js
+const alumnos = [
+    {
+        id: 1,
+        nombre: "Ana"
+    },
+    {
+        id: 2,
+        nombre: "José"
+    }
+];
+function obtenerAlumnos(){
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(alumnos)
+        }, 2000);
+    })
+}
+async function iniciar(){
+    const datos = await obtenerAlumnos()
+    console.table(datos)
+}
+iniciar()
+// const alumnos = [
+//     {
+//         id: 1,
+//         nombre: "Ana"
+//     },
+//     {
+//         id: 2,
+//         nombre: "José"
+//     }
+// ];
+// function obtenerAlumnos(){
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             resolve(alumnos)
+//         }, 2000);
+//     })
+// }
+
+// crear obtenerMaterias()
+// crear obtenerDocentes()
+// mostrar los datos a través de async/await
+
+async function obtenerAlumnos() {
+    const respuesta = await fetch("https://jsonplaceholder.typicode.com/users")
+    const alumnos = await respuesta.json()
+    return alumnos
+}
+
+function mostrarAlumnos(alumnos){
+   console.log(alumnos)
+//    console.log(alumnos[5])
+// for (const alumno of alumnos){
+//     console.log(alumno.id, alumno.name, alumno.email)
+// }
+}
+
+async function inciar(){
+    const alumnos = await obtenerAlumnos()
+    mostrarAlumnos(alumnos)
+}
+
+inciar()
+
+// Actividades: realizar consulta a las Apis:
+// /post
+// /comments
+// mostrar: id, título, usuario
+
+JS/asincronia.js
+
+// function obtenerAlumnos(){
+//    return new Promise((resolve) => {
+//     setTimeout(() => {
+//         console.log("Ya tengo el arreglo")
+//         resolve(["Ana", "Juan", "Pedro"])
+//     }, 3000);
+//    })
+// }
+// // obtenerAlumnos().then((alumnos) => {
+// //     console.log(alumnos)
+// // })
+
+// // async function iniciar() {
+// //     const alumnos = await obtenerAlumnos()
+// //     console.log(alumnos)
+// // } 
+// // iniciar()
+
+// // login(usuario).then((usuario) => {
+// //     return obtenerCursos(usuario.id)
+// // })
+// // .then((cursos) => {
+// //     return obtenerNotas(cursos)
+// // })
+// // .then((notas) => {
+// //     console.log(notas)
+// // })
+// // .catch((error) => {
+// //     console.log(error)
+// // })
+
+// // async function mostrarNotas(){
+// //     try {
+// //     const usuario = await login(usuario)
+// //     const cursos = await obtnerCursos(usuario.id)
+// //     const notas = await obtenerNotas(cursos)
+// //     console.log(notas)
+// //     }
+// //     catch(error) {
+// //         console.log()
+// //     }
+// // }
+
+// function obtenerClima() {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             resolve("22°c - Soleado")
+//         }, 2000)
+//     })
+// }
+
+// // con then()
+// obtenerClima().then((clima) => {
+//     console.log(clima)
+// });
+
+// // con async/await
+// async function mostrarClima() {
+//     const clima = await obtenerClima()
+//     console.log(clima)
+// }
+
+// mostrarClima()
+
+/ function consultarSaldo() {
+//     return new Promise((resolve) => {
+//     setTimeout(() => {
+//         resolve(125000)
+//     }, 3000);
+// });
+// }
+
+// async function mostrarSaldo(){
+//     const saldo = await consultarSaldo()
+//     console.log(`Su saldo es: $${saldo}`)
+// }
+// mostrarSaldo()
+
+// function iniciarSesion() {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             resolve("Bienvenida, Irina")
+//         }, 2000)
+//     })
+// }
+// async function mostrarInicio() {
+//     const mensaje = await iniciarSesion()
+//     console.log(mensaje)
+// }
+// mostrarInicio()
+
+// function obtenerUsuario(){
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             resolve({
+//                 id: 1,
+//                 nombre: "Maria",
+//                 edad: 25
+//             })
+//         }, 3000);
+//     })
+// }
+// async function mostrarUsuario(){
+//     console.log("Consultando usuario...")
+//     const usuario = await obtenerUsuario()
+//     console.log(usuario)
+// }
+// mostrarUsuario()
+
+async function prueba(){
+const respuesta = await fetch("https://jsonplaceholder.typicode.com/users")
+console.log(respuesta)
+}
+
+prueba()
+
+index.html
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src="JS/alumnos.js" defer></script>
+    <title>SGA</title>
+</head>
+<body>
+		Programación IV
+
+		1 de 1
+

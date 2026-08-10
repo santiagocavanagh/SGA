@@ -11,15 +11,21 @@ function obtenerAlumnos() {
 
 async function obtenerAlumnos() {
   const res = await fetch("https://jsonplaceholder.typicode.com/users");
-  const alumno = await res.json();
-  return alumno
+  const alumnos = await res.json();
+  return alumnos;
 }
 
-function mostrarAlumnos(alumnos){
-  console.table(alumnos)
+function mostrarAlumnos(alumnos) {
+  //  console.table(alumnos)
+  console.log(typeof alumnos);
+  localStorage.setItem("alumnos", JSON.stringify(alumnos));
+  const datos = localStorage.getItem("alumnos");
+  console.log(typeof datos);
+  const datosConvert = JSON.parse(datos);
+  console.log(typeof datosConvert);
 }
 
-async function iniciar(){
-  const alumnos = await obtenerAlumnos
-  mostrarAlumnos(alumnos)
+async function iniciar() {
+  const alumnos = await obtenerAlumnos;
+  mostrarAlumnos(alumnos);
 }
