@@ -1,4 +1,4 @@
-Código clase 1
+Cï¿½digo clase 1
 commit: "Clase 01 - Estructura inicial del proyecto"
 
 .gitignore
@@ -16,7 +16,7 @@ LICENSE
 <!-- (https://choosealicense.com/licenses/mit/) -->
 MIT License
 
-Copyright (c) 2026 Programación IV - FRRQ (Reconquista - Santa Fe)
+Copyright (c) 2026 Programaciï¿½n IV - FRRQ (Reconquista - Santa Fe)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -35,15 +35,15 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 README.md
 
-# Sistema de Gestión Académica (SGA)
+# Sistema de Gestiï¿½n Acadï¿½mica (SGA)
 
-Proyecto desarrollado durante la materia Programación IV.
+Proyecto desarrollado durante la materia Programaciï¿½n IV.
 
-## Descripción
+## Descripciï¿½n
 
-El Sistema de Gestión Académica (SGA) es una aplicación web que permitirá administrar alumnos, docentes, cursos y materias.
+El Sistema de Gestiï¿½n Acadï¿½mica (SGA) es una aplicaciï¿½n web que permitirï¿½ administrar alumnos, docentes, cursos y materias.
 
-Durante el desarrollo del proyecto se incorporarán progresivamente nuevas tecnologías y funcionalidades.
+Durante el desarrollo del proyecto se incorporarï¿½n progresivamente nuevas tecnologï¿½as y funcionalidades.
 
 
 ## Objetivos
@@ -56,13 +56,13 @@ Durante el desarrollo del proyecto se incorporarán progresivamente nuevas tecnol
 
 - Gestionar materias.
 
-- Implementar autenticación de usuarios.
+- Implementar autenticaciï¿½n de usuarios.
 
 - Consumir una API REST.
 
-- Persistir la información en MongoDB.
+- Persistir la informaciï¿½n en MongoDB.
 
-## Tecnologías
+## Tecnologï¿½as
 
 
 Actualmente:
@@ -70,7 +70,7 @@ Actualmente:
 - HTML5
 
 
-Próximamente:
+Prï¿½ximamente:
 
 - CSS3
 
@@ -93,7 +93,7 @@ Próximamente:
 Nombre del estudiante
 
 
-Programación IV
+Programaciï¿½n IV
 
 index.html
 <!DOCTYPE html>
@@ -104,13 +104,13 @@ index.html
     <title>SGA</title>
 </head>
 <body>
-    <h1>Sistema de Gestión Académica</h1>
-    <p>Proyecto de Programación IV</p>
+    <h1>Sistema de Gestiï¿½n Acadï¿½mica</h1>
+    <p>Proyecto de Programaciï¿½n IV</p>
 </body>
 </html>
 
 Clase 2:
-commit: "Clase 02 - Agrego estructura JS y primer ejemplo de asincronía"
+commit: "Clase 02 - Agrego estructura JS y primer ejemplo de asincronï¿½a"
 
 JS/asincronia.js
 
@@ -161,7 +161,7 @@ Actualmente:
 
 ## Estado del proyecto
 
-- Versión: 
+- Versiï¿½n: 
 Clase 02
 
 Clase 3:
@@ -176,7 +176,7 @@ const alumnos = [
     },
     {
         id: 2,
-        nombre: "José"
+        nombre: "Josï¿½"
     }
 ];
 function obtenerAlumnos(){
@@ -195,7 +195,7 @@ iniciar()
 // Actividades:
 // crear obtenerMaterias()
 // crear obtenerDocentes()
-// mostrar los datos a través de async/await
+// mostrar los datos a travï¿½s de async/await
 
 JS/asincronia.js
 
@@ -252,7 +252,7 @@ function obtenerAlumnos(){
 function obtenerClima() {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve("22°c - Soleado")
+            resolve("22ï¿½c - Soleado")
         }, 2000)
     })
 }
@@ -327,7 +327,7 @@ const alumnos = [
     },
     {
         id: 2,
-        nombre: "José"
+        nombre: "Josï¿½"
     }
 ];
 function obtenerAlumnos(){
@@ -349,7 +349,7 @@ iniciar()
 //     },
 //     {
 //         id: 2,
-//         nombre: "José"
+//         nombre: "Josï¿½"
 //     }
 // ];
 // function obtenerAlumnos(){
@@ -362,7 +362,7 @@ iniciar()
 
 // crear obtenerMaterias()
 // crear obtenerDocentes()
-// mostrar los datos a través de async/await
+// mostrar los datos a travï¿½s de async/await
 
 async function obtenerAlumnos() {
     const respuesta = await fetch("https://jsonplaceholder.typicode.com/users")
@@ -388,7 +388,7 @@ inciar()
 // Actividades: realizar consulta a las Apis:
 // /post
 // /comments
-// mostrar: id, título, usuario
+// mostrar: id, tï¿½tulo, usuario
 
 JS/asincronia.js
 
@@ -438,7 +438,7 @@ JS/asincronia.js
 // function obtenerClima() {
 //     return new Promise((resolve) => {
 //         setTimeout(() => {
-//             resolve("22°c - Soleado")
+//             resolve("22ï¿½c - Soleado")
 //         }, 2000)
 //     })
 // }
@@ -518,7 +518,7 @@ index.html
     <title>SGA</title>
 </head>
 <body>
-		Programación IV
+		Programaciï¿½n IV
 
 		1 de 1
 
