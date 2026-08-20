@@ -35,7 +35,19 @@ Próximamente:
 
 ## Estado del proyecto
 
-🚧 En desarrollo.
+Clase - 10 (estructura actual)
+SGA/
+|
+|** index.html
+|** alumnos.html
+|** docentes.html
+|
+|** css/
+| |\_estilos.css
+|
+|** js/
+|** alumnos.js
+|\_\_ docentes.js
 
 ## Autor
 
