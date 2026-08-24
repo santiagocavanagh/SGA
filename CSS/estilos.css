@@ -16,27 +16,98 @@ header {
 }
 
 main {
-    color:rgb(68, 68, 68);
-    width: 90%;
-    max-width: 1000px;
-    margin: 30px auto;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
 }
 
-section {
-    background-color: rgb(235, 230, 226);
-    padding: 25px;
-    margin-bottom: 25px;
-    border-radius: 8px;
+h1 {
+    margin-bottom: 30px;
+}
+
+h2 {
+    margin-top: 0;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
 }
 
-form button {
-    margin-top: 10px;
+.form-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    padding: 10px 20px;
+    background-color: rgb(224, 228, 243);
+    color:  rgb(31, 47, 63);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: rgb(108, 172, 233);
+}
+
+.lista-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
+.campo label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.campo input {
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.campo input:focus {
+    outline: none;
+    border-color:rgb(85, 137, 185);
+    box-shadow: 0 0 5px rgba(85, 137, 185, 0.5);
+}
+
+nav {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 18px 20px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+nav a:active {
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
 table {
@@ -66,6 +137,7 @@ th {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     z-index: 1000;
 }
+
 .mje-error {
     position: fixed;
     top: 20px;

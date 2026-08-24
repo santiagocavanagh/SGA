@@ -1,14 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/estilos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="JS/materias.js" defer></script>
     <title>SGA - Materias</title>
 </head>
+
 <body>
-    
+    <header>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="alumnos.html">Alumnos</a>
+            <a href="docentes.html">Docentes</a>
+            <a href="materias.html">Materias</a>
+        </nav>
+    </header>
+    <main>
+        <section class="formulario">
+            <form id="formulario">
+                <label for="nombre">Nombre de la Materia</label>
+                <input type="text" id="nombre"><br><br>
+                <label for="codigo">Código</label>
+                <input type="text" id="codigo"><br><br>
+                <label for="carrera">Carrera</label>
+                <input type="text" id="carrera"><br><br>
+                <button type="submit">Guardar Materia</button>
+            </form>
+        </section>
+
+        <section>
+            <p id="mensaje"></p>
+        </section>
+
+        <section class="materias">
+            <h2>Materias Registradas</h2>
+            <p id="cantidadMaterias"></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Materia</th>
+                        <th>Código</th>
+                        <th>Carrera</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="lista"></tbody>
+            </table>
+        </section>
 </body>
 </html>

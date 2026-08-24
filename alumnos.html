@@ -1,57 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SGA - Alumnos</title>
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/estilos.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
     <script src="JS/alumnos.js" defer></script>
-</head>
-<body>
-     <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="alumnos.html">Alumnos</a></li>
-                <li><a href="docentes.html">Docentes</a></li>
-                <li><a href="materias.html">Materias</a></li>
-            </ul>
-        </nav>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="alumnos.html">Alumnos</a>
+        <a href="docentes.html">Docentes</a>
+        <a href="materias.html">Materias</a>
+      </nav>
     </header>
     <main>
-        <section class="formulario">
-            <form id="formulario">
-                <label for="nombre">Nombre</label>
-                <input type="text" id="nombre"><br><br>
-                <label for="carrera">Carrera</label>
-                <input type="text" id="carrera"><br><br>
-                <label for="correo">Correo Electronico</label>
-                <input type="email" id="correo"><br><br>
-                
-                <button type="submit">Guardar</button>
-            </form>
-        </section>
-        <section>
-            <p id="mensaje"></p>
-        </section>
-        <section class="alumnos">
-            <h2>Alumnos Registrados</h2>
-            <p id="cantidadAlumnos"></p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Carrera</th>
-                        <th>e-mail</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="lista">
+      <section class="formulario">
+        <form id="formulario">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" /><br /><br />
+          <label for="carrera">Carrera</label>
+          <input type="text" id="carrera" /><br /><br />
+          <label for="correo">Correo Electronico</label>
+          <input type="email" id="correo" /><br /><br />
 
-                </tbody>
-            </table>
-        </section>
+          <button type="submit">Guardar</button>
+        </form>
+      </section>
+      <section>
+        <p id="mensaje"></p>
+      </section>
+      <section class="alumnos">
+        <h2>Alumnos Registrados</h2>
+        <p id="cantidadAlumnos"></p>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Carrera</th>
+              <th>e-mail</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="lista"></tbody>
+        </table>
+      </section>
     </main>
-</body>
+  </body>
 </html>
