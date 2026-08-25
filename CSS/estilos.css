@@ -5,8 +5,8 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
-    background-color: #f4f6f8;
-    color: #333;
+    background-color: #fafcff;
+    color: #222222;
 }
 
 header {
@@ -34,7 +34,7 @@ form {
 }
 
 .form-container {
-    background-color: #f9f9f9;
+    background-color: rgb(230, 243, 255);
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 30px;
@@ -43,15 +43,15 @@ form {
 
 button {
     padding: 10px 20px;
-    background-color: rgb(224, 228, 243);
-    color:  rgb(31, 47, 63);
+    background-color: rgb(31, 101, 167);
+    color:  rgb(215, 221, 226);
     border: none;
     cursor: pointer;
     border-radius: 5px;
 }
 
 button:hover {
-    background-color: rgb(108, 172, 233);
+    background-color: rgb(33, 74, 221);
 }
 
 .lista-container {
@@ -202,7 +202,7 @@ th {
     padding: 35px 25px;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2, box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .tarjeta:hover {
