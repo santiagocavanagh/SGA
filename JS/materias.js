@@ -62,20 +62,14 @@ formulario.addEventListener("submit", function (event) {
     mostrarMensaje("Materia actualizada correctamente", "mje-exito");
   }
 
-  localStorage.setItem("materias", JSON.stringify(materias));
+  guardarDatos("materias", materias);
 
   mostrarMaterias(materias);
   formulario.reset();
 });
 
 function obtenerMaterias() {
-  const datos = localStorage.getItem("materias");
-
-  if (datos) {
-    return JSON.parse(datos);
-  }
-
-  return [];
+  return obtenerDatos("materias");
 }
 
 function mostrarMensaje(texto, clase) {
@@ -120,7 +114,7 @@ function eliminarMateria(id) {
 
   const materiasActualizadas = materias.filter((materia) => materia.id !== id);
 
-  localStorage.setItem("materias", JSON.stringify(materiasActualizadas));
+  guardarDatos("materias", materiasActualizadas);
 
   mostrarMaterias(materiasActualizadas);
 

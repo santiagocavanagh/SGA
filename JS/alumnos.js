@@ -58,28 +58,15 @@ formulario.addEventListener("submit", function (event) {
     mostrarMensaje("Alumno actualizado correctamente", "mje-exito");
   }
 
-  localStorage.setItem("alumnos", JSON.stringify(alumnos));
+  // localStorage.setItem("alumnos", JSON.stringify(alumnos));
+  guardarDatos("alumnos", alumnos);
 
   mostrarAlumnos(alumnos);
   formulario.reset();
 });
 
 function obtenerAlumnos() {
-  const datos = localStorage.getItem("alumnos");
-  if (datos) {
-    return JSON.parse(datos);
-  }
-  return [];
-}
-
-function mostrarMensaje(texto, clase) {
-  mensaje.className = clase;
-  mensaje.textContent = texto;
-
-  setTimeout(() => {
-    mensaje.textContent = "";
-    mensaje.className = "oculto";
-  }, 3000);
+  return obtenerDatos("alumnos");
 }
 
 function mostrarAlumnos(alumnos) {
@@ -114,7 +101,7 @@ function eliminarAlumno(id) {
 
   const alumnosActualizados = alumnos.filter((alumno) => alumno.id !== id);
 
-  localStorage.setItem("alumnos", JSON.stringify(alumnosActualizados));
+  guardarDatos("alumnos", alumnosActualizados);
 
   mostrarAlumnos(alumnosActualizados);
 
