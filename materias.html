@@ -24,12 +24,21 @@
     <main>
         <section class="form-container">
             <form id="formulario">
-                <label for="nombre">Nombre de la Materia</label>
-                <input type="text" id="nombre"><br><br>
-                <label for="codigo">Código</label>
-                <input type="text" id="codigo"><br><br>
-                <label for="carrera">Carrera</label>
-                <input type="text" id="carrera"><br><br>
+                <div class="form-header">
+                    <h2>Registro de Materias</h2>
+                </div>
+                <div class="form-group">
+                    <label for="nombre">Nombre de la Materia</label>
+                    <input type="text" id="nombre"><br><br>
+                </div>
+                <div class="form-group">
+                    <label for="codigo">Código</label>
+                    <input type="text" id="codigo"><br><br>
+                </div>
+                <div class="form-group">
+                    <label for="carrera">Carrera</label>
+                    <input type="text" id="carrera"><br><br>
+                </div>
                 <button type="submit">Guardar Materia</button>
             </form>
         </section>
@@ -38,7 +47,7 @@
             <p id="mensaje"></p>
         </section>
 
-        <section class="lista-container">
+        <section class="list-container">
             <h2>Materias Registradas</h2>
             <p id="cantidadMaterias"></p>
             <table>
@@ -51,7 +60,7 @@
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody id="lista"></tbody>
+                <tbody id="list"></tbody>
             </table>
         </section>
 </body>

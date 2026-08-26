@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SGA - Alumnos</title>
     <link rel="stylesheet" href="css/estilos.css" />
     <link
       rel="stylesheet"
@@ -12,6 +11,7 @@
     <script src="JS/storage.js" defer></script>
     <script src="JS/ui.js" defer></script>
     <script src="JS/alumnos.js" defer></script>
+    <title>SGA - Alumnos</title>
   </head>
   <body>
     <header>
@@ -25,20 +25,28 @@
     <main>
       <section class="form-container">
         <form id="formulario">
-          <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" /><br /><br />
-          <label for="carrera">Carrera</label>
-          <input type="text" id="carrera" /><br /><br />
-          <label for="correo">Correo Electronico</label>
-          <input type="email" id="correo" /><br /><br />
-
+          <div class="form-header">
+            <h2>Registro de Alumnos</h2>
+          </div>
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" />
+          </div>
+          <div class="form-group">
+            <label for="carrera">Carrera</label>
+            <input type="text" id="carrera" />
+          </div>
+          <div class="form-group">
+            <label for="correo">Correo Electronico</label>
+            <input type="email" id="correo" />
+          </div>
           <button type="submit">Guardar Alumno</button>
         </form>
       </section>
       <section>
         <p id="mensaje"></p>
       </section>
-      <section class="lista-container">
+      <section class="list-container">
         <h2>Alumnos Registrados</h2>
         <p id="cantidadAlumnos"></p>
         <table>
@@ -51,7 +59,7 @@
               <th>Acciones</th>
             </tr>
           </thead>
-          <tbody id="lista"></tbody>
+          <tbody id="list"></tbody>
         </table>
       </section>
     </main>

@@ -26,12 +26,21 @@
     <main>
       <section class="form-container">
         <form id="formulario">
-          <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" /><br /><br />
-          <label for="especialidad">Especialidad</label>
-          <input type="text" id="especialidad" /><br /><br />
-          <label for="correo">Correo Electrónico</label>
-          <input type="email" id="correo" /><br /><br />
+          <div class="form-header">
+            <h2>Registro de Docentes</h2>
+          </div>
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" /><br /><br />
+          </div>
+          <div class="form-group">
+            <label for="especialidad">Especialidad</label>
+            <input type="text" id="especialidad" /><br /><br />
+          </div>
+          <div class="form-group">
+            <label for="correo">Correo Electrónico</label>
+            <input type="email" id="correo" /><br /><br />
+          </div>
           <button type="submit">Guardar Docente</button>
         </form>
       </section>
@@ -40,7 +49,7 @@
         <p id="mensaje"></p>
       </section>
 
-      <section class="lista-container">
+      <section class="list-container">
         <h2>Docentes Registrados</h2>
         <p id="cantidadDocentes"></p>
         <table>
@@ -53,7 +62,7 @@
               <th>Acciones</th>
             </tr>
           </thead>
-          <tbody id="lista"></tbody>
+          <tbody id="list"></tbody>
         </table>
       </section>
     </main>

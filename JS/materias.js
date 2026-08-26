@@ -1,6 +1,6 @@
 const formulario = document.querySelector("#formulario");
 const mensaje = document.querySelector("#mensaje");
-const lista = document.querySelector("#lista");
+const lista = document.querySelector("#list");
 const cantidadMaterias = document.querySelector("#cantidadMaterias");
 
 let materiaEditId = null;

@@ -14,7 +14,7 @@ header {
 }
 
 main {
-    max-width: 1100px;
+    max-width: 1280px;
     margin: 40px auto;
     padding: 20px;
 }
@@ -54,40 +54,40 @@ button:hover {
     background-color: rgb(33, 74, 221);
 }
 
-.lista-container {
+.list-container {
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.campo {
+.form-group {
     display: flex;
     flex-direction: column;
     gap: 5px;
     margin-bottom: 5px;
 }
 
-.campo label {
+.form-group label {
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-.campo input {
+.form-group input {
     font-size: 16px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-.campo input:focus {
+.form-group input:focus {
     outline: none;
     border-color:rgb(85, 137, 185);
     box-shadow: 0 0 5px rgba(85, 137, 185, 0.5);
 }
 
 nav {
-    max-width: 1100px;
+    max-width: 1280px;
     margin: auto;
     display: flex;
     align-items: center;
@@ -181,7 +181,7 @@ th {
 
 .inicio {
     text-align: center;
-    max-width: 1000px;
+    max-width: 1280px;
 }
 
 .inicio > p {
