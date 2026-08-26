@@ -18,7 +18,7 @@
             <a href="index.html">Inicio</a>
             <a href="alumnos.html">Alumnos</a>
             <a href="docentes.html">Docentes</a>
-            <a href="materias.html">Materias</a>
+            <a href="materias.html" class="active">Materias</a>
         </nav>
     </header>
     <main>
@@ -29,17 +29,24 @@
                 </div>
                 <div class="form-group">
                     <label for="nombre">Nombre de la Materia</label>
-                    <input type="text" id="nombre"><br><br>
+                    <input type="text" id="nombre">
                 </div>
                 <div class="form-group">
                     <label for="codigo">Código</label>
-                    <input type="text" id="codigo"><br><br>
+                    <input type="text" id="codigo">
                 </div>
                 <div class="form-group">
                     <label for="carrera">Carrera</label>
-                    <input type="text" id="carrera"><br><br>
+                    <input type="text" id="carrera">
                 </div>
-                <button type="submit">Guardar Materia</button>
+                 <div class="form-action">
+            <button type="submit">Guardar Materia</button>
+          </div>
+          <div class="form-action">
+            <button type="button" id="btnCancelar" class="btn-cancelar">
+              Cancelar
+            </button>
+          </div>
             </form>
         </section>
 

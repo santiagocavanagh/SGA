@@ -2,8 +2,11 @@ const formulario = document.querySelector("#formulario");
 const mensaje = document.querySelector("#mensaje");
 const lista = document.querySelector("#list");
 const cantidadAlumnos = document.querySelector("#cantidadAlumnos");
+const btnCancelar = document.querySelector("#btnCancelar");
+const btnGuardar = document.querySelector("#btnGuardar");
 
 let alumnoEditId = null;
+let alumnoEditar = null;
 
 formulario.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -52,8 +55,9 @@ formulario.addEventListener("submit", function (event) {
     alumno.correo = correo;
 
     alumnoEditId = null;
+    alumnoEditar = null;
 
-    formulario.querySelector("button").textContent = "Guardar Alumno";
+    btnGuardar.textContent = "Guardar Alumno";
 
     mostrarMensaje("Alumno actualizado correctamente", "mje-exito");
   }
@@ -108,8 +112,8 @@ function eliminarAlumno(id) {
   if (alumnoEditId === id) {
     formulario.reset();
     alumnoEditId = null;
-
-    formulario.querySelector("button").textContent = "Guardar Alumno";
+    btnGuardar.textContent = "Guardar Alumno";
+    btnCancelar.style.display = "none";
   }
 
   mostrarMensaje("Alumno Eliminado", "mje-exito");
@@ -152,10 +156,19 @@ function editarAlumno(id) {
 
   alumnoEditId = id;
 
-  formulario.querySelector("button").textContent = "Actualizar Alumno";
+  btnCancelar.style.display = "inline-block";
+
+  btnGuardar.textContent = "Actualizar Alumno";
 
   document.querySelector("#nombre").focus();
 }
+
+btnCancelar.addEventListener("click", () => {
+  formulario.reset();
+  alumnoEditId = null;
+  btnGuardar.textContent = "Guardar Alumno";
+  btnCancelar.style.display = "none";
+});
 
 const alumnos = obtenerAlumnos();
 mostrarAlumnos(alumnos);

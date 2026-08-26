@@ -19,7 +19,7 @@
       <nav>
         <a href="index.html">Inicio</a>
         <a href="alumnos.html">Alumnos</a>
-        <a href="docentes.html">Docentes</a>
+        <a href="docentes.html" class="active">Docentes</a>
         <a href="materias.html">Materias</a>
       </nav>
     </header>
@@ -31,17 +31,24 @@
           </div>
           <div class="form-group">
             <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" /><br /><br />
+            <input type="text" id="nombre" />
           </div>
           <div class="form-group">
             <label for="especialidad">Especialidad</label>
-            <input type="text" id="especialidad" /><br /><br />
+            <input type="text" id="especialidad" />
           </div>
           <div class="form-group">
             <label for="correo">Correo Electrónico</label>
-            <input type="email" id="correo" /><br /><br />
+            <input type="email" id="correo" />
           </div>
-          <button type="submit">Guardar Docente</button>
+          <div class="form-action">
+            <button type="submit">Guardar Docente</button>
+          </div>
+          <div class="form-action">
+            <button type="button" id="btnCancelar" class="btn-cancelar">
+              Cancelar
+            </button>
+          </div>
         </form>
       </section>
 
