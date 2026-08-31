@@ -9,14 +9,7 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-const alumnos = [
-  {
-    id: 1,
-    nombre: "Santiago Raul Ignacio Cavanagh",
-    carrera: "TUP2026",
-    email: "santicav92@gmail.com",
-  },
-];
+const alumnos = [{}];
 
 const docentes = [
   {
@@ -41,7 +34,7 @@ const materias = [
     carrera: "TUP",
   },
   {
-    id: 1,
+    id: 2,
     nombre: "Proyecto Desarrollo Software",
     codigo: "PDS2026",
     carrera: "TUP",
@@ -52,22 +45,31 @@ app.get("/alumnos", (req, res) => {
   res.json(alumnos);
 });
 
-app.get("/docentes", (req, res) => {
-  res.json(docentes);
-});
-
-app.get("/Materias", (req, res) => {
-  res.json(materias);
-});
-
 app.get("/alumnos/:id", (req, res) => {
   const id = Number(req.params.id);
-  const alumno = alumnos.find((a) => a.id === id);
-  if (alumno) {
-    res.json(alumno);
+  const alumno = alumnos.find((alumno) => alumno.id === id);
+
+  alumno.id = req.body.id;
+  alumno.nombre = req.body.nombre;
+  alumno.carrera = req.body.carrera;
+  alumno.email = req.body.email;
+
+  res.json({ mensaje: "Alumno Actualizado" });
+});
+
+app.put("/alumnos/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const alumnoIndex = alumnos.findIndex((a) => a.id === id);
+  if (alumnoIndex !== -1) {
+    alumnos[alumnoIndex] = { ...alumnos[alumnoIndex], ...req.body };
+    res.json(alumnos[alumnoIndex]);
   } else {
     res.status(404).json({ error: "Alumno no encontrado" });
   }
+});
+
+app.get("/docentes", (req, res) => {
+  res.json(docentes);
 });
 
 app.get("/docentes/:id", (req, res) => {
@@ -78,6 +80,10 @@ app.get("/docentes/:id", (req, res) => {
   } else {
     res.status(404).json({ error: "Docente no encontrado" });
   }
+});
+
+app.get("/materias", (req, res) => {
+  res.json(materias);
 });
 
 app.get("/materias/:id", (req, res) => {
