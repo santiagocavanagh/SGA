@@ -57,6 +57,17 @@ app.get("/alumnos/:id", (req, res) => {
   res.json({ mensaje: "Alumno Actualizado" });
 });
 
+app.post("/alumnos", (req, res) => {
+  const { id, nombre, carrera, email } = req.body;
+  const nuevoAlumno = { id, nombre, carrera, email };
+
+  alumnos.push(nuevoAlumno);
+  return res.status(201).json({
+    mensaje: "Alumno creado exitosamente",
+    alumno: nuevoAlumno,
+  });
+});
+
 app.put("/alumnos/:id", (req, res) => {
   const id = Number(req.params.id);
   const alumnoIndex = alumnos.findIndex((a) => a.id === id);
