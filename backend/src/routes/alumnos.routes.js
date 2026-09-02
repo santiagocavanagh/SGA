@@ -1,11 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const { obtenerAlumnos } = require("../controllers/alumnos.controller");
+//import { obtenerAlumnos } from "../controllers/alumnos.controller";
 
-let alumnos = [];
-
-router.get("/", (req, res) => {
-  res.json(alumnos);
-});
+router.get("/", obtenerAlumnos);
 
 router.get("/:id", (req, res) => {
   const id = Number(req.params.id);
@@ -17,7 +15,7 @@ router.get("/:id", (req, res) => {
     alumno.carrera = req.body.carrera;
     alumno.email = req.body.email;
 
-    res.json({ mensaje: "Alumno Actualizado" });
+    res.json(alumno);
   } else {
     res.status(404).json({ error: "Alumno no encontrado" });
   }
@@ -55,3 +53,5 @@ router.delete("/:id", (req, res) => {
     res.status(404).json({ error: "Alumno no encontrado" });
   }
 });
+
+module.exports = router;
