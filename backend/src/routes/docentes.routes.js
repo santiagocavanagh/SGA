@@ -1,31 +1,17 @@
 const express = require("express");
+const {
+  obtenerDocentes,
+  obtenerDocente,
+  agregarDocente,
+  editarDocente,
+  borrarDocente,
+} = require("../controllers/docentes.controller");
 const router = express.Router();
 
-let docentes = [
-  {
-    id: 1,
-    nombre: "Irina Agretti",
-    especialidad: "Programacion IV",
-    email: "iriagretti@gmail.com",
-  },
-  {
-    id: 2,
-    nombre: "Eliana Sulligoy",
-    especialidad: "Proyecto Desarrollo Software",
-    email: "elisulligoy@gmail.com",
-  },
-];
+router.get("/", obtenerDocentes);
+router.get("/:id", obtenerDocente);
+router.post("/", agregarDocente);
+router.put("/:id", editarDocente);
+router.delete("/:id", borrarDocente);
 
-router.get("/", (req, res) => {
-  res.json(docentes);
-});
-
-router.get("/:id", (req, res) => {
-  const id = Number(req.params.id);
-  const docente = docentes.find((a) => a.id === id);
-  if (docente) {
-    res.json(docente);
-  } else {
-    res.status(404).json({ error: "Docente no encontrado" });
-  }
-});
+module.exports = router;

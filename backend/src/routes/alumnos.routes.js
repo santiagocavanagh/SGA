@@ -9,13 +9,9 @@ const {
 } = require("../controllers/alumnos.controller");
 
 router.get("/", obtenerAlumnos);
-
 router.get("/:id", obtenerAlumno);
-
 router.post("/", agregarAlumno);
-
 router.put("/:id", editarAlumno);
-
 router.delete("/:id", borrarAlumno);
 
 module.exports = router;
