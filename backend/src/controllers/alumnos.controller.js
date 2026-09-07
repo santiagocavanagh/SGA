@@ -20,7 +20,7 @@ function obtenerAlumno(req, res) {
   }
 }
 
-function agregarAlumno(req, res) {
+function crearAlumno(req, res) {
   const { id, nombre, carrera, email } = req.body;
   const nuevoAlumno = { id, nombre, carrera, email };
 
@@ -34,6 +34,7 @@ function agregarAlumno(req, res) {
 function editarAlumno(req, res) {
   const id = Number(req.params.id);
   const alumnoIndex = alumnos.findIndex((a) => a.id === id);
+
   if (alumnoIndex !== -1) {
     alumnos[alumnoIndex] = { ...alumnos[alumnoIndex], ...req.body };
     res.json(alumnos[alumnoIndex]);
@@ -56,7 +57,7 @@ function borrarAlumno(req, res) {
 module.exports = {
   obtenerAlumnos,
   obtenerAlumno,
-  agregarAlumno,
+  crearAlumno,
   editarAlumno,
   borrarAlumno,
 };
