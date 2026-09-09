@@ -1,19 +1,15 @@
-const alumnos = require("../data/alumnos.data");
+const Alumno = require("../models/Alumno");
 
-function obtenerAlumnos(req, res) {
+async function obtenerAlumnos(req, res) {
+  const alumnos = await Alumno.find();
   res.json(alumnos);
 }
 
-function obtenerAlumno(req, res) {
-  const id = Number(req.params.id);
-  const alumno = alumnos.find((alumno) => alumno.id === id);
+async function obtenerAlumno(req, res) {
+  const legajo = Number(req.params.legajo);
+  const alumno = Alumno.find((a) => a.legajo === legajo);
 
   if (alumno) {
-    alumno.id = req.body.id;
-    alumno.nombre = req.body.nombre;
-    alumno.carrera = req.body.carrera;
-    alumno.email = req.body.email;
-
     res.json(alumno);
   } else {
     res.status(404).json({ error: "Alumno no encontrado" });
@@ -21,10 +17,10 @@ function obtenerAlumno(req, res) {
 }
 
 function crearAlumno(req, res) {
-  const { id, nombre, carrera, email } = req.body;
-  const nuevoAlumno = { id, nombre, carrera, email };
+  const { legajo, nombre, carrera, email } = req.body;
+  const nuevoAlumno = { legajo, nombre, carrera, email };
 
-  alumnos.push(nuevoAlumno);
+  Alumno.create(nuevoAlumno);
   return res.status(201).json({
     mensaje: "Alumno creado exitosamente",
     alumno: nuevoAlumno,
@@ -33,11 +29,11 @@ function crearAlumno(req, res) {
 
 function editarAlumno(req, res) {
   const id = Number(req.params.id);
-  const alumnoIndex = alumnos.findIndex((a) => a.id === id);
+  const alumno = Alumno.findByIdAndUpdate(id);
 
-  if (alumnoIndex !== -1) {
-    alumnos[alumnoIndex] = { ...alumnos[alumnoIndex], ...req.body };
-    res.json(alumnos[alumnoIndex]);
+  if (alumno) {
+    Alumno[alumno] = { ...Alumno[alumno], ...req.body };
+    res.status(202).json({ mensaje: "alumno editado" });
   } else {
     res.status(404).json({ error: "Alumno no encontrado" });
   }
@@ -45,9 +41,9 @@ function editarAlumno(req, res) {
 
 function borrarAlumno(req, res) {
   const id = Number(req.params.id);
-  const alumnoIndex = alumnos.findIndex((a) => a.id === id);
-  if (alumnoIndex !== -1) {
-    alumnos.splice(alumnoIndex, 1);
+  const alumno = Alumno.findIndex((a) => a.id === id);
+  if (alumno !== -1) {
+    Alumno.splice(alumno, 1);
     res.json({ mensaje: "Alumno eliminado exitosamente" });
   } else {
     res.status(404).json({ error: "Alumno no encontrado" });
