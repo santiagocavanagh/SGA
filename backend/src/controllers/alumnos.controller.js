@@ -19,6 +19,13 @@ async function obtenerAlumno(req, res) {
 
 async function crearAlumno(req, res) {
   const { legajo, nombre, carrera, email } = req.body;
+  const legajoExist = await Alumno.findOne({ legajo });
+
+  if (legajoExist) {
+    return res.status(400).json({
+      mensaje: "Legajo en uso",
+    });
+  }
   const nuevoAlumno = await Alumno.create({ legajo, nombre, carrera, email });
   res.status(201).json(nuevoAlumno);
 }
@@ -26,10 +33,13 @@ async function crearAlumno(req, res) {
 async function editarAlumno(req, res) {
   const alumno = await Alumno.findOneAndUpdate(
     { legajo: Number(req.params.id) },
-    req.body,
+    { nombre, carrera, email },
   );
-
-  res.json(alumno);
+  if (alumno) {
+    res.json(alumno);
+  } else {
+    return res.status(404).json({ mensaje: "alumno no encontrado" });
+  }
 }
 
 async function borrarAlumno(req, res) {
