@@ -2,7 +2,7 @@ function mostrarMensaje(texto, clase) {
   const mensaje = document.querySelector("#mensaje");
 
   mensaje.textContent = texto;
-  mensaje.className = `clase ${clase}`;
+  mensaje.className = `mensaje ${clase}`;
   mensaje.style.display = "block";
 
   setTimeout(() => {

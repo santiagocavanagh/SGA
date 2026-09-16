@@ -13,6 +13,7 @@
     <script src="JS/alumnos.js" defer></script>
     <title>SGA - Alumnos</title>
   </head>
+
   <body>
     <header>
       <nav>
@@ -24,9 +25,13 @@
     </header>
     <main>
       <section class="form-container">
-        <form id="formulario">
+        <form id="form">
           <div class="form-header">
             <h2>Registro de Alumnos</h2>
+          </div>
+          <div class="form-group">
+            <label for="legajo">Legajo</label>
+            <input type="text" id="legajo" />
           </div>
           <div class="form-group">
             <label for="nombre">Nombre</label>
@@ -37,8 +42,8 @@
             <input type="text" id="carrera" />
           </div>
           <div class="form-group">
-            <label for="correo">Correo Electronico</label>
-            <input type="email" id="correo" />
+            <label for="email">Correo Electronico</label>
+            <input type="email" id="email" />
           </div>
           <div class="form-action">
             <button type="submit" id="btnGuardar">Guardar Alumno</button>
@@ -53,13 +58,13 @@
       <section>
         <p id="mensaje"></p>
       </section>
-      <section class="list-container">
+      <section class="list">
         <h2>Alumnos Registrados</h2>
         <p id="cantidadAlumnos"></p>
         <table>
           <thead>
             <tr>
-              <th>ID</th>
+              <th>Lgeajo</th>
               <th>Nombre</th>
               <th>Carrera</th>
               <th>e-mail</th>
