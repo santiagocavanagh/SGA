@@ -1,20 +1,24 @@
-import Navbar from "./components/Navbar"
-import Title from "./components/Title"
-import Text from "./components/Text"
-import Form from "./components/Form"
-import Footer from "./components/Footer"
+import { useState, useEffect } from "react";
+import Form from "./components/Form";
+import List from "./components/List";
 
-function App () {
+export function App() {
+  const [actualizar, setActualizar] = useState(0);
+  const [editarAlumno, setEditarAlumno] = useState(null);
 
-return (
-  <>
-  <Navbar/>
-  <Title/>
-  <Text/>
-  <Form/>
-  <Footer/>
-  </>
-  )
+  function crearAlumno() {
+    setActualizar((valor) => valor + 1);
+    setEditarAlumno(null);
+  }
+
+  function alumnoSelect(alumno) {
+    setEditarAlumno(alumno);
+  }
+
+  return (
+    <main>
+      <Form key={editarAlumno?.legajo ?? "nuevo"} onCrearAlumno={crearAlumno} />
+      <List actualizar={actualizar} onCrearAlumno={crearAlumno} />
+    </main>
+  );
 }
-
-export default App
