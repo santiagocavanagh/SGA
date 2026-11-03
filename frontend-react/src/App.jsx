@@ -1,24 +1,18 @@
-import { useState, useEffect } from "react";
-import Form from "./components/Form";
-import List from "./components/List";
+import { Routes, Route } from "react-router-dom";
+import LayoutPpal from "./layouts/LayoutPpal";
+import Inicio from "./pages/Inicio";
+import FAQ from "./pages/FAQ";
+import Alumnos from "./pages/Alumnos";
 
-export function App() {
-  const [actualizar, setActualizar] = useState(0);
-  const [editarAlumno, setEditarAlumno] = useState(null);
-
-  function crearAlumno() {
-    setActualizar((valor) => valor + 1);
-    setEditarAlumno(null);
-  }
-
-  function alumnoSelect(alumno) {
-    setEditarAlumno(alumno);
-  }
-
+function App() {
   return (
-    <main>
-      <Form key={editarAlumno?.legajo ?? "nuevo"} onCrearAlumno={crearAlumno} />
-      <List actualizar={actualizar} onCrearAlumno={crearAlumno} />
-    </main>
+    <Routes>
+      <Route path="/" element={<LayoutPpal />}>
+        <Route index element={<Inicio />} />
+        <Route path="alumnos" element={<Alumnos />} />
+        <Route path="ayuda" element={<FAQ />} />
+      </Route>
+    </Routes>
   );
 }
+export default App;

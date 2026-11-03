@@ -19,11 +19,31 @@ async function obtenerAlumno(req, res) {
 
 async function crearAlumno(req, res) {
   const { legajo, nombre, carrera, email } = req.body;
+  if (!legajo || !nombre || !carrera || !email) {
+    return res.status(400).json({
+      mensaje: "Todos los campos son obligatorios",
+    });
+  }
+  if (typeof nombre !== "string") {
+    return res.status(400).json({
+      mensaje: "El nombre debe ser un texto",
+    });
+  }
+  if (typeof legajo !== "number") {
+    return res.status(400).json({
+      mensaje: "El legajo debe ser un número",
+    });
+  }
+  if (typeof carrera !== "string") {
+    return res.status(400).json({
+      mensaje: "La carrera debe ser un texto",
+    });
+  }
   const legajoExist = await Alumno.findOne({ legajo });
 
   if (legajoExist) {
     return res.status(400).json({
-      mensaje: "Legajo en uso",
+      mensaje: "Legajo ya está en uso",
     });
   }
   const nuevoAlumno = await Alumno.create({ legajo, nombre, carrera, email });
@@ -31,9 +51,11 @@ async function crearAlumno(req, res) {
 }
 
 async function editarAlumno(req, res) {
+  const { nombre, carrera, email } = req.body;
   const alumno = await Alumno.findOneAndUpdate(
     { legajo: Number(req.params.id) },
     { nombre, carrera, email },
+    { returnDocument: "after" },
   );
   if (alumno) {
     res.json(alumno);

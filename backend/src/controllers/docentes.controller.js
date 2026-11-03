@@ -1,12 +1,11 @@
-const docentes = require("../data/docentes.data");
+const docentes = require("../models/Docente");
 
 function obtenerDocentes(req, res) {
   res.json(docentes);
 }
 
-function obtenerDocente(req, res) {
-  const id = Number(req.params.id);
-  const docente = docentes.find((a) => a.id === id);
+async function obtenerDocente(req, res) {
+  const docente = await docente.findOne((a) => a.id === id);
   if (docente) {
     res.json(docente);
   } else {
@@ -15,8 +14,8 @@ function obtenerDocente(req, res) {
 }
 
 function agregarDocente(req, res) {
-  const { id, nombre, carrera, email } = req.body;
-  const nuevoDocente = { id, nombre, carrera, email };
+  const { id, nombre, especialidad, email } = req.body;
+  const nuevoDocente = { id, nombre, especialidad, email };
 
   docentes.push(nuevoDocente);
   return res.status(201).json({

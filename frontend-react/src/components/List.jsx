@@ -1,23 +1,32 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import Alert from "@mui/material/Alert";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Chip from "@mui/material/Chip";
+import Paper from "@mui/material/Paper";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
-export function List({ actualizar, onCrearAlumno }) {
+const API_ALUMNOS = "http://localhost:3000/alumnos";
+
+export default function List({ update, onCreate, onEdit }) {
   const [alumnos, setAlumnos] = useState([]);
-  const [cargar, setCargar] = useState(true);
+  const [load, setLoad] = useState(true);
   const [error, setError] = useState("");
 
-  async function eliminarAlumno(legajo) {
-    const confirmar = alert.confirm("Seguro quiere eliminar este alumno?");
+  async function borrar(legajo) {
+    const confirmar = window.confirm("Seguro quiere eliminar este alumno?");
     if (!confirmar) {
       return;
     }
     try {
-      const res = await fetch("http://localhost:3000/alumnos/"`${legajo}`, {
+      const res = await fetch(`${API_ALUMNOS}/${legajo}`, {
         method: "DELETE",
       });
       if (!res.ok) {
         throw new Error(`No se puede eliminar! HTTP ERROR: ${res.status}`);
       }
-      onCrearAlumno();
+      onCreate();
     } catch (error) {
       console.error("Error al eliminar: ", error);
       alert(error.message || "No se puede eliminar Alumno");
@@ -25,44 +34,135 @@ export function List({ actualizar, onCrearAlumno }) {
   }
 
   useEffect(() => {
-    async function lista() {
-      setCargar(true);
-
+    async function loadList() {
+      setLoad(true);
       setError("");
 
       try {
-        const response = await fetch("http://localhost:3000/alumnos");
+        const res = await fetch(API_ALUMNOS);
 
-        if (!response.ok) {
-          throw new Error("no se pudo obtener la lista", response.status);
+        if (!res.ok) {
+          throw new Error("no se pudo obtener la lista", res.status);
         }
 
-        const list = await response.json();
-        setAlumnos(list);
+        const data = await res.json();
+        setAlumnos(data);
       } catch (error) {
         console.error("Error de conexión", error);
+        setError("No se puede cargar datos");
       } finally {
-        setCargar();
+        setLoad(false);
       }
     }
-    lista();
-  }, [actualizar]);
+    loadList();
+  }, [update]);
+
+  if (load) {
+    return (
+      <Paper
+        component="section"
+        elevation={0}
+        sx={{ p: 3, border: 1, borderColor: "divider", borderRadius: 4 }}
+      >
+        <Typography color="text.secondary">Cargando alumnos...</Typography>
+      </Paper>
+    );
+  }
+  if (error) {
+    return (
+      <Alert severity="error" role="alert">
+        {error}
+      </Alert>
+    );
+  }
 
   return (
-    <section>
-      <ul>
-        {alumnos.map((alumno) => (
-          <li key={alumno.legajo}>
-            {alumno.nombre}
-            {alumno.carrera}
-            {alumno.email}
-            <br />
-            <button type="button" onClick={() => eliminarAlumno(alumno.legajo)}>
-              Eliminar
-            </button>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <Paper
+      component="section"
+      elevation={0}
+      sx={{
+        p: { xs: 2.5, sm: 3.5 },
+        border: 1,
+        borderColor: "divider",
+        borderRadius: 4,
+        bgcolor: "background.paper",
+      }}
+    >
+      <Typography component="h2" variant="h5" sx={{ mb: 2.5, fontWeight: 700 }}>
+        Alumnos
+      </Typography>
+      {alumnos.length === 0 ? (
+        <Typography color="text.secondary">
+          No hay alumnos registrados.
+        </Typography>
+      ) : (
+        <Stack
+          component="ul"
+          spacing={1.5}
+          sx={{ listStyle: "none", p: 0, m: 0 }}
+        >
+          {alumnos.map((alumno) => (
+            <Paper
+              component="li"
+              key={alumno.legajo}
+              elevation={0}
+              sx={{
+                p: { xs: 2, sm: 2.5 },
+                border: 1,
+                borderColor: "divider",
+                borderRadius: 3,
+                display: "flex",
+                alignItems: { xs: "stretch", sm: "center" },
+                justifyContent: "space-between",
+                flexDirection: { xs: "column", sm: "row" },
+                gap: 2,
+              }}
+            >
+              <Stack
+                direction="row"
+                spacing={1.5}
+                sx={{ alignItems: "center", flexWrap: "wrap" }}
+              >
+                <Chip
+                  label={`Legajo ${alumno.legajo}`}
+                  color="primary"
+                  variant="outlined"
+                  size="small"
+                />
+                <Box>
+                  <Typography fontWeight={600}>{alumno.nombre}</Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {alumno.carrera}
+                  </Typography>
+                </Box>
+              </Stack>
+              <Stack
+                direction="row"
+                spacing={1}
+                sx={{ justifyContent: "flex-end" }}
+              >
+                <Button
+                  type="button"
+                  onClick={() => onEdit(alumno)}
+                  variant="outlined"
+                  size="small"
+                >
+                  Editar
+                </Button>
+                <Button
+                  type="button"
+                  onClick={() => borrar(alumno.legajo)}
+                  variant="outlined"
+                  color="error"
+                  size="small"
+                >
+                  Eliminar
+                </Button>
+              </Stack>
+            </Paper>
+          ))}
+        </Stack>
+      )}
+    </Paper>
   );
 }
