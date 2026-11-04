@@ -21,13 +21,29 @@ export default function Login() {
     setMessage("");
 
     try {
-        const res = await fetch(API_LOGIN, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ email, password })
-        });
+      const res = await fetch(API_LOGIN, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.message || "Login Fallido");
+        setLoading(false);
+        return;
+      }
+      setUser(data.user);
+      setMessage(data.message || "login Exitoso");
+      setEmail("");
+      setPassword("");
+    } catch (error) {
+      console.error("Error de Login", error);
+      setError(error.message || "No se pudo conectar con el servidor");
+    } finally {
+      setLoading(false);
     }
   }
 }

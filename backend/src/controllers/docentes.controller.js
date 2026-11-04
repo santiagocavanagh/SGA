@@ -1,11 +1,14 @@
-const docentes = require("../models/Docente");
+const Docente = require("../models/Docente");
 
-function obtenerDocentes(req, res) {
+async function obtenerDocentes(req, res) {
+  const docentes = await Docente.find();
   res.json(docentes);
 }
 
 async function obtenerDocente(req, res) {
-  const docente = await docente.findOne((a) => a.id === id);
+  const docente = await Docente.findOne({
+    dni: Number(req.params.id),
+  });
   if (docente) {
     res.json(docente);
   } else {
@@ -13,37 +16,70 @@ async function obtenerDocente(req, res) {
   }
 }
 
-function agregarDocente(req, res) {
-  const { id, nombre, especialidad, email } = req.body;
-  const nuevoDocente = { id, nombre, especialidad, email };
+async function agregarDocente(req, res) {
+  const { dni, nombre, especialidad, email } = req.body;
 
-  docentes.push(nuevoDocente);
-  return res.status(201).json({
-    mensaje: "Docente creado exitosamente",
-    docente: nuevoDocente,
+  if (!dni || !nombre || !especialidad || !email) {
+    return res.status(400).json({
+      mensaje: "Todos los campos son obligatorios",
+    });
+  }
+  if (typeof nombre !== "string") {
+    return res.status(400).json({
+      mensaje: "El nombre debe ser un texto",
+    });
+  }
+  if (typeof dni !== "number") {
+    return res.status(400).json({
+      mensaje: "El dni debe ser un número",
+    });
+  }
+
+  const exist = await Docente.findOne({ dni });
+  if (exist) {
+    return res.status(400).json({
+      mensaje: "El dni ya está en uso",
+    });
+  }
+  const nuevoDocente = await Docente.create({
+    dni,
+    nombre,
+    especialidad,
+    email,
   });
+
+  res.status(201).json(nuevoDocente);
 }
 
-function editarDocente(req, res) {
-  const id = Number(req.params.id);
-  const docenteIndex = docentes.findIndex((a) => a.id === id);
-  if (docenteIndex !== -1) {
-    docentes[docenteIndex] = { ...docentes[docenteIndex], ...req.body };
-    res.json(docentes[docenteIndex]);
-  } else {
-    res.status(404).json({ error: "Docente no encontrado" });
+async function editarDocente(req, res) {
+  const { nombre, especialidad, email } = req.body;
+
+  const docente = await Docente.findOneAndUpdate(
+    { dni: Number(req.params.id) },
+    { nombre, especialidad, email },
+    { returnDocument: "after" },
+  );
+
+  if (!docente) {
+    return res.status(404).json({
+      mensaje: "Docente no econtrado",
+    });
   }
+
+  res.json(docente);
 }
 
-function borrarDocente(req, res) {
-  const id = Number(req.params.id);
-  const docenteIndex = docentes.findIndex((a) => a.id === id);
-  if (docenteIndex !== -1) {
-    docentes.splice(docenteIndex, 1);
-    res.json({ mensaje: "Docente eliminado exitosamente" });
-  } else {
-    res.status(404).json({ error: "Docente no encontrado" });
+async function borrarDocente(req, res) {
+  const docente = await Docente.findOneAndDelete({
+    dni: Number(req.params.id),
+  });
+  if (!docente) {
+    return res.status(404).json({
+      mensaje: "Docente no econtrado",
+    });
   }
+
+  res.json({ mensaje: "Docente eliminado correctamente" });
 }
 
 module.exports = {

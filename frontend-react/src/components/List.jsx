@@ -11,7 +11,7 @@ const API_ALUMNOS = "http://localhost:3000/alumnos";
 
 export default function List({ update, onCreate, onEdit }) {
   const [alumnos, setAlumnos] = useState([]);
-  const [load, setLoad] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   async function borrar(legajo) {
@@ -35,7 +35,7 @@ export default function List({ update, onCreate, onEdit }) {
 
   useEffect(() => {
     async function loadList() {
-      setLoad(true);
+      setLoading(true);
       setError("");
 
       try {
@@ -51,13 +51,13 @@ export default function List({ update, onCreate, onEdit }) {
         console.error("Error de conexión", error);
         setError("No se puede cargar datos");
       } finally {
-        setLoad(false);
+        setLoading(false);
       }
     }
     loadList();
   }, [update]);
 
-  if (load) {
+  if (loading) {
     return (
       <Paper
         component="section"
