@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const materiaSchema = new mongoose.Schema(
   {
-    codigo: { type: String, unique: true },
+    codigo: { type: String, unique: true, required: true },
     nombre: { type: String, required: true },
     horario: { type: Number, required: true },
     aula: { type: Number, required: true },

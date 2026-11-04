@@ -59,6 +59,7 @@ function FormD({ onCreateD, editD, onCancel }) {
         email: "",
       });
       onCreateD();
+      onCancel();
     } catch (error) {
       console.error("Error al guardar:", error);
       setError(error.message || "No se pudo conectar con el servidor");

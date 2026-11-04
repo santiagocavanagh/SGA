@@ -7,7 +7,7 @@ async function obtenerMaterias(req, res) {
 
 async function obtenerMateria(req, res) {
   const materia = await Materia.findOne({
-    codigo: Number(req.params.id),
+    codigo: req.params.id,
   });
   if (materia) {
     res.json(materia);
@@ -17,9 +17,9 @@ async function obtenerMateria(req, res) {
 }
 
 async function agregarMateria(req, res) {
-  const { codigo, nombre, horario } = req.body;
+  const { codigo, nombre, horario, aula } = req.body;
 
-  if (!codigo || !nombre || !horario) {
+  if (!codigo || !nombre || !horario || !aula) {
     return res.status(400).json({
       mensaje: "Todos los campos son obligatorios",
     });
@@ -29,7 +29,7 @@ async function agregarMateria(req, res) {
       mensaje: "El nombre debe ser un texto",
     });
   }
-  if (typeof codigo !== "String") {
+  if (typeof codigo !== "string") {
     return res.status(400).json({
       mensaje: "El Codigo debe corresponder a Letras",
     });
@@ -44,18 +44,19 @@ async function agregarMateria(req, res) {
   const nuevaMateria = await Materia.create({
     codigo,
     nombre,
-    horario,
+    horario: Number(horario),
+    aula: Number(aula),
   });
 
   res.status(201).json(nuevaMateria);
 }
 
 async function editarMateria(req, res) {
-  const { nombre, descripcion, docente } = req.body;
+  const { nombre, horario, aula } = req.body;
 
   const materia = await Materia.findOneAndUpdate(
-    { codigo: Number(req.params.id) },
-    { nombre, horario },
+    { codigo: req.params.id },
+    { nombre, horario, aula },
     { returnDocument: "after" },
   );
 
@@ -70,7 +71,7 @@ async function editarMateria(req, res) {
 
 async function borrarMateria(req, res) {
   const materia = await Materia.findOneAndDelete({
-    codigo: Number(req.params.id),
+    codigo: req.params.id,
   });
 
   if (!materia) {

@@ -23,7 +23,7 @@ export default function Materias() {
         editM={editM}
         onCancel={() => setEditM(null)}
       />
-      <ListM actualizar={update} onCreateM={createM} onEditD={SelectM} />
+      <ListM update={update} onCreateM={createM} onEditM={SelectM} />
     </>
   );
 }

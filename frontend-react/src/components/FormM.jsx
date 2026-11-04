@@ -59,6 +59,7 @@ function FormM({ onCreateM, editM, onCancel }) {
         aula: "",
       });
       onCreateM();
+      onCancel();
     } catch (error) {
       console.error("Error al guardar:", error);
       setError(error.message || "No se pudo conectar con el servidor");

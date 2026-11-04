@@ -19,11 +19,11 @@ export default function Docentes() {
     <>
       <FormD
         key={editD?.dni ?? "nuevo"}
-        onDocenteCreado={createD}
-        docenteEditar={editD}
-        onCancelar={() => setEditD(null)}
+        onCreateD={createD}
+        editD={editD}
+        onCancel={() => setEditD(null)}
       />
-      <ListD actualizar={update} onCreateD={createD} onEditD={SelectD} />
+      <ListD update={update} onCreateD={createD} onEditD={SelectD} />
     </>
   );
 }
