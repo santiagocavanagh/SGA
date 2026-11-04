@@ -1,4 +1,5 @@
 const express = require("express");
+const router = express.Router();
 const {
   obtenerDocentes,
   obtenerDocente,
@@ -6,7 +7,6 @@ const {
   editarDocente,
   borrarDocente,
 } = require("../controllers/docentes.controller");
-const router = express.Router();
 
 router.get("/", obtenerDocentes);
 router.get("/:id", obtenerDocente);

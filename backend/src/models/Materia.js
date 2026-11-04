@@ -4,9 +4,8 @@ const materiaSchema = new mongoose.Schema(
   {
     codigo: { type: String, unique: true },
     nombre: { type: String, required: true },
-    horario: { type: String, required: true },
-    aula: String,
-    descripcion: String,
+    horario: { type: Number, required: true },
+    aula: { type: Number, required: true },
   },
   { versionKey: false },
 );

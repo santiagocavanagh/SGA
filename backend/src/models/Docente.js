@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const docenteSchema = new mongoose.Schema(
   {
     dni: { type: Number, unique: true, required: true, trim: true },
-    nombre: { type: String, required: ture },
+    nombre: { type: String, required: true },
     especialidad: { type: String, required: true },
     email: { type: String, unique: true, required: true, trim: true },
   },

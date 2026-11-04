@@ -1,4 +1,5 @@
 const express = require("express");
+const router = express.Router();
 const {
   obtenerMaterias,
   obtenerMateria,
@@ -6,7 +7,6 @@ const {
   editarMateria,
   borrarMateria,
 } = require("../controllers/materias.controller");
-const router = express.Router();
 
 router.get("/", obtenerMaterias);
 router.get("/:id", obtenerMateria);

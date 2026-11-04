@@ -1,6 +1,6 @@
 import { useState } from "react";
 import FormD from "../components/FormD";
-import ListD from "../components/ListaDocentes";
+import ListD from "../components/ListD";
 
 export default function Docentes() {
   const [update, setUpdate] = useState(0);

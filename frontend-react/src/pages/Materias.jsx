@@ -1,6 +1,6 @@
 import { useState } from "react";
-import FormD from "../components/FormD";
-import ListD from "../components/ListaDocentes";
+import FormM from "../components/FormM";
+import ListM from "../components/ListM";
 
 export default function Materias() {
   const [update, setUpdate] = useState(0);
@@ -17,13 +17,13 @@ export default function Materias() {
 
   return (
     <>
-      <FormD
+      <FormM
         key={editM?.codigo ?? "nuevo"}
         onCreateM={createM}
         editM={editM}
         onCancel={() => setEditM(null)}
       />
-      <ListD actualizar={update} onCreateM={createM} onEditD={SelectM} />
+      <ListM actualizar={update} onCreateM={createM} onEditD={SelectM} />
     </>
   );
 }
