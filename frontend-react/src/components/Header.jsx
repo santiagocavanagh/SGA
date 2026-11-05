@@ -1,4 +1,4 @@
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, NavLink } from "react-router-dom";
 import HelpOutlineRoundedIcon from "@mui/icons-material/HelpOutlineRounded";
 import {
   AppBar,
@@ -13,6 +13,19 @@ import {
 import Selector from "./Selector";
 
 export default function Header() {
+  const navSx = {
+    px: { xs: 1.25, sm: 1.75 },
+    py: 0.75,
+    borderRadius: 2,
+    fontWeight: 500,
+    transition: "background-color 0.2s, color 0.2s",
+    "&:hover": { bgcolor: "action.hover" },
+    "&.active": {
+      bgcolor: "action.selected",
+      color: "primary.main",
+      fontWeight: 700,
+    },
+  };
   return (
     <AppBar
       component="header"
@@ -46,14 +59,15 @@ export default function Header() {
             <Stack direction="row" spacing={1.25} sx={{ alignItems: "center" }}>
               <Box
                 component="img"
-                src="/sga-logo.svg"
-                alt="Identidad visual de SGA"
-                sx={{
+                src="/sga-logo.png"
+                alt="Logo de SGA"
+                sx={(theme) => ({
                   display: "block",
                   width: { xs: 42, sm: 50 },
                   height: { xs: 42, sm: 50 },
                   objectFit: "contain",
-                }}
+                  ...theme.applyStyles("dark", { filter: "invert(1)" }),
+                })}
               />
               <Box>
                 <Typography
@@ -84,58 +98,39 @@ export default function Header() {
             }}
           >
             <Link
-              component={RouterLink}
+              component={NavLink}
               to="/"
+              end
               color="text.primary"
               underline="none"
-              sx={{
-                px: { xs: 1, sm: 1.5 },
-                py: 1,
-                borderRadius: 2,
-                "&:hover": { bgcolor: "action.hover" },
-              }}
+              sx={navSx}
             >
               Inicio
             </Link>
             <Link
-              component={RouterLink}
+              component={NavLink}
               to="/alumnos"
               color="text.primary"
               underline="none"
-              sx={{
-                px: { xs: 1, sm: 1.5 },
-                py: 1,
-                borderRadius: 2,
-                "&:hover": { bgcolor: "action.hover" },
-              }}
+              sx={navSx}
             >
               Alumnos
             </Link>
             <Link
-              component={RouterLink}
+              component={NavLink}
               to="/docentes"
               color="text.primary"
               underline="none"
-              sx={{
-                px: { xs: 1, sm: 1.5 },
-                py: 1,
-                borderRadius: 2,
-                "&:hover": { bgcolor: "action.hover" },
-              }}
+              sx={navSx}
             >
               Docentes
             </Link>
             <Link
-              component={RouterLink}
+              component={NavLink}
               to="/materias"
               color="text.primary"
               underline="none"
-              sx={{
-                px: { xs: 1, sm: 1.5 },
-                py: 1,
-                borderRadius: 2,
-                "&:hover": { bgcolor: "action.hover" },
-              }}
+              sx={navSx}
             >
               Materias
             </Link>

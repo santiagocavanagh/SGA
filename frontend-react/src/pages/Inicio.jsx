@@ -14,7 +14,7 @@ export default function Inicio(){
                 border: 1,
                 borderColor: "divider",
                 borderRadius: { xs: 4, md: 6 },
-                background: theme => `linear-gradient(135deg, ${theme.palette.background.paper} 55%, ${theme.palette.action.hover} 100%)`
+                background: theme => `linear-gradient(135deg, ${theme.vars.palette.background.paper} 55%, ${theme.vars.palette.action.hover} 100%)`
             }}
         >
             <Box sx={{ maxWidth: 720 }}>

@@ -116,6 +116,8 @@ export default function List({ update, onCreate, onEdit }) {
                 justifyContent: "space-between",
                 flexDirection: { xs: "column", sm: "row" },
                 gap: 2,
+                transition: "border-color 0.2s, box-shadow 0.2s",
+                "&:hover": { borderColor: "primary.main", boxShadow: 2 },
               }}
             >
               <Stack
@@ -129,7 +131,7 @@ export default function List({ update, onCreate, onEdit }) {
                   variant="outlined"
                   size="small"
                 />
-                <Box>
+                <Box sx={{ minWidth: 0, overflowWrap: "anywhere" }}>
                   <Typography fontWeight={600}>{alumno.nombre}</Typography>
                   <Typography variant="body2" color="text.secondary">
                     {alumno.carrera}

@@ -1,7 +1,16 @@
 import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
-  colorShemes: {
+  cssVariables: { colorSchemeSelector: "class" },
+  shape: { borderRadius: 10 },
+  typography: {
+    fontFamily: '"Inter", "Segoe UI", Roboto, system-ui, sans-serif',
+    button: { textTransform: "none", fontWeight: 600 },
+  },
+  components: {
+    MuiButton: { defaultProps: { disableElevation: true } },
+  },
+  colorSchemes: {
     light: {
       palette: {
         primary: {
@@ -13,7 +22,7 @@ const theme = createTheme({
           contrastText: "#FFFFFF",
         },
         background: {
-          default: "#F4F1Eb",
+          default: "#F4F1EB",
           paper: "#FFFCF7",
         },
         text: {
@@ -39,7 +48,7 @@ const theme = createTheme({
         },
         text: {
           primary: "#F0F2F4",
-          secondary: "#B5BeC7",
+          secondary: "#B5BEC7",
         },
         divider: "#414B56",
       },

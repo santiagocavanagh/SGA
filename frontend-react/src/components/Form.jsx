@@ -78,6 +78,7 @@ function Form({ onCreate, Edit, onCancel }) {
         border: 1,
         borderColor: "divider",
         borderRadius: 4,
+        boxShadow: 1,
         bgcolor: "background.paper",
       }}
     >
