@@ -19,16 +19,30 @@ async function obtenerMateria(req, res) {
 async function agregarMateria(req, res) {
   const { codigo, nombre, horario, aula } = req.body;
 
-  if (!codigo || !nombre || !horario || !aula) {
+  if (!codigo || !nombre || horario === undefined || aula === undefined) {
     return res.status(400).json({
       mensaje: "Todos los campos son obligatorios",
     });
   }
+
   if (typeof nombre !== "string") {
     return res.status(400).json({
       mensaje: "El nombre debe ser un texto",
     });
   }
+
+  if (typeof horario !== "number" || horario <= 0) {
+    return res.status(400).json({
+      mensaje: "La carga horaria es inválida",
+    });
+  }
+
+  if (typeof aula !== "number" || aula <= 0) {
+    return res.status(400).json({
+      mensaje: "El aula es inválida",
+    });
+  }
+
   if (typeof codigo !== "string") {
     return res.status(400).json({
       mensaje: "El Codigo debe corresponder a Letras",
@@ -41,6 +55,7 @@ async function agregarMateria(req, res) {
       mensaje: "El codigo ya está en uso",
     });
   }
+
   const nuevaMateria = await Materia.create({
     codigo,
     nombre,

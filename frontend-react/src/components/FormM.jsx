@@ -35,7 +35,7 @@ function FormM({ onCreateM, editM, onCancel }) {
 
     const materia = {
       ...form,
-      codigo: Number(form.codigo),
+      codigo: String(form.codigo),
     };
     const edit = Boolean(editM);
     const url = edit ? `${API_MATERIAS}/${editM.codigo}` : API_MATERIAS;

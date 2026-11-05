@@ -11,7 +11,7 @@ import {
 
 const API_MATERIAS = "http://localhost:3000/materias";
 
-export default function ListD({ update, onCreateM, onEditM }) {
+export default function ListM({ update, onCreateM, onEditM }) {
   const [materias, setMaterias] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
