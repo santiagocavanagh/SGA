@@ -16,7 +16,7 @@ export default function Header() {
   const navSx = {
     px: { xs: 1.25, sm: 1.75 },
     py: 0.75,
-    borderRadius: 2,
+    borderRadius: 25,
     fontWeight: 500,
     transition: "background-color 0.2s, color 0.2s",
     "&:hover": { bgcolor: "action.hover" },
@@ -56,24 +56,27 @@ export default function Header() {
             underline="none"
             sx={{ display: "inline-flex", alignItems: "center", flexShrink: 0 }}
           >
-            <Stack direction="row" spacing={1.25} sx={{ alignItems: "center" }}>
+            <Stack direction="row" spacing={2.25} sx={{ alignItems: "center" }}>
               <Box
                 component="img"
-                src="/sga-logo.png"
+                src="/SGA.png"
                 alt="Logo de SGA"
                 sx={(theme) => ({
                   display: "block",
                   width: { xs: 42, sm: 50 },
                   height: { xs: 42, sm: 50 },
                   objectFit: "contain",
-                  ...theme.applyStyles("dark", { filter: "invert(1)" }),
+                  ...theme.applyStyles("dark", { filter: "invert(0.7)" }),
+                  ...theme.applyStyles("light", {
+                    filter: ["invert(0.3)", "opacity(0.8)"],
+                  }),
                 })}
               />
               <Box>
                 <Typography
-                  variant="h6"
+                  variant="h4"
                   color="text.primary"
-                  sx={{ fontWeight: 800, lineHeight: 1.15 }}
+                  sx={{ fontWeight: 800, lineHeight: 0.9 }}
                 >
                   SGA
                 </Typography>

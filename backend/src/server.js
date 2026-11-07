@@ -10,7 +10,7 @@ app.use(express.json());
 const connectDB = require("./config/database");
 
 const authRoutes = require("./routes/auth.routes");
-app.use("(auth/login", authRoutes);
+app.use("/auth/login", authRoutes);
 const alumnosRoutes = require("./routes/alumnos.routes");
 app.use("/alumnos", alumnosRoutes);
 const docentesRoutes = require("./routes/docentes.routes");

@@ -14,12 +14,13 @@
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "12.1.0",
+      "version": "12.18.0",
       "onFail": "download"
     }
   },
-  "packageManager": "pnpm@12.1.0",
+  "packageManager": "pnpm@12.18.0",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
